@@ -1,0 +1,36 @@
+import pygame
+import Game as dm
+pygame.init()
+
+# Just a few static variables
+red   = (255,  0,  0)
+green =  ( 0,255,  0)
+blue  =  ( 0,  0,255)
+black = (0,0,0)
+white = (255,255,255)
+
+size = width, height = 340,240
+screen = pygame.display.set_mode(size)
+screen.fill(black)
+pygame.display.update()
+pygame.key.set_repeat(500,30)
+
+choose = dm.dumbmenu(screen, [
+                        'Start Game',
+                        'Options',
+                        'Manual',
+                        'Show Highscore',
+                        'Quit Game'], 64,64,None,32,1.4,white ,blue)
+
+if choose == 0:
+    print ("You choose 'Start Game'.")
+elif choose == 1:
+    print ("You choose 'Options'.")
+elif choose == 2:
+    print( "You choose 'Manual'.")
+elif choose == 3:
+    print ("You choose 'Show Highscore'.")
+elif choose == 4:
+    print ("You choose 'Quit Game'.")
+pygame.quit()
+exit()
