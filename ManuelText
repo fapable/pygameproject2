@@ -1,0 +1,30 @@
+import pygame
+import sys
+def printManual():
+
+    pygame.init()
+
+    pygame.display.set_caption('font example')
+    size = [640, 480]
+    screen = pygame.display.set_mode(size)
+
+    clock = pygame.time.Clock()
+
+    basicfont = pygame.font.SysFont(None, 30)
+    text = basicfont.render('Het verhaal \n Je bent een gevangene \n die vastzit in de Gevangenis Rotterdam en je ontsnapt met vijf andere gevangenen. Jullie hebben in de gevangenis via een geheime bron gehoord dat er een boot vertrekt vanaf Parkhaven, den Boot kan twee personen ongemerkt het land uit kan smokkelen. Alle vijf gevangenen en jijzelf zijn van plan om op den Boot het land uit te vluchten. Jullie gaan ieder je eigen weg en in de stad Rotterdam verzamelen jullie overlevingsmiddelen om op de boot te kunnen overleven. Jouw doel is om als eerst bij de boot aan te komen met je overlevingsmiddelen zodat jij het land ongemerkt uit komt en niet gepakt wordt door de politie die je op de hielen zit. De stad zit vol gevaren en de andere vijf gevangenen willen het je ook niet makkelijk maken, kies jouw strategie en beland als eerste op de boot want kort nadat de eerste gevangene arriveert vaart de boot weg.',
+                            True, (255, 255, 255), (0, 0, 0))
+    textrect = text.get_rect()
+
+
+    screen.fill((0, 0, 0))
+    screen.blit(text, textrect)
+
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        clock.tick(20)
