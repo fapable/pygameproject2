@@ -70,7 +70,8 @@ class Vector:
 
 
 class Player:
-    def __init__(self, x, y, image):
+    def __init__(self, name, x, y, image):
+        self.name = name
         self.pos = Vector(x, y)
         self.image = image
 
@@ -128,9 +129,9 @@ def program():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(0,7, obama)
-    Player2 = Player(0,8, kim)
-    Player3 = Player(0,9, trump)
+    Player1 = Player("player1", 0,7, obama)
+    Player2 = Player("player2",0,8, kim)
+    Player3 = Player("player3",0,9, trump)
 
 
     while not process_events():
@@ -246,10 +247,10 @@ def program2():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(0,7, obama)
-    Player2 = Player(0,8, kim)
-    Player3 = Player(0,9, trump)
-    Player4 = Player(0,10, rund)
+    Player1 = Player("player1", 0,7, obama)
+    Player2 = Player("player2", 0,8, kim)
+    Player3 = Player("player3", 0,9, trump)
+    Player4 = Player("player4", 0,10, rund)
 
 
     while not process_events():
@@ -367,11 +368,11 @@ def program3():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(0,7, obama)
-    Player2 = Player(0,8, kim)
-    Player3 = Player(0,9, trump)
-    Player4 = Player(0,10, rund)
-    Player5 = Player(0,11, snoopdog)
+    Player1 = Player("player1", 0,7, obama)
+    Player2 = Player("player2", 0,8, kim)
+    Player3 = Player("player3", 0,9, trump)
+    Player4 = Player("player4", 0,10, rund)
+    Player5 = Player("player5", 0,11, snoopdog)
 
 
     while not process_events():
@@ -490,12 +491,12 @@ def program4():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(0,7, obama)
-    Player2 = Player(0,8, kim)
-    Player3 = Player(0,9, trump)
-    Player4 = Player(0,10, rund)
-    Player5 = Player(0,11, snoopdog)
-    Player6 = Player(0, 12, gw)
+    Player1 = Player("player1", 0,7, obama)
+    Player2 = Player("player2", 0,8, kim)
+    Player3 = Player("player3", 0,9, trump)
+    Player4 = Player("player4", 0,10, rund)
+    Player5 = Player("player5", 0,11, snoopdog)
+    Player6 = Player("player6", 0, 12, gw)
 
 
     while not process_events():
