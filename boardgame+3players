@@ -33,6 +33,8 @@ dice_four = pygame.image.load("dice_four.png")
 dice_five = pygame.image.load("dice_five.png")
 dice_six = pygame.image.load("dice_six.png")
 obama = pygame.image.load("obamaspeler.png")
+kim = pygame.image.load("kimkspeler.png")
+trump = pygame.image.load("trumpspeler.png")
 black = 0, 0, 0
 white = 255, 255, 255
 red = 255, 0, 0
@@ -65,8 +67,9 @@ class Vector:
 
 
 class Player:
-    def __init__(self, x, y):
+    def __init__(self, x, y, image):
         self.pos = Vector(x, y)
+        self.image = image
 
     def update(self):
         if (self.pos.y, self.pos.x) in normale_vakjes_links:
@@ -83,7 +86,9 @@ class Player:
                 self.pos.y += 1
 
     def draw(self, screen):
-        screen.blit(obama, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
+        screen.blit(self.image, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
+
+
 
 
 
@@ -120,14 +125,16 @@ def program():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(0,0)
-    Player2 = Player(3,0)
-    Player3 = Player(6,0)
+    Player1 = Player(0,0, obama)
+    Player2 = Player(3,0, kim)
+    Player3 = Player(4,0, trump)
+
 
     while not process_events():
         Player.update(Player1)
         Player.update(Player2)
         Player.update(Player3)
+
 
         # Clear the screen
         screen.fill((255,255,255))
@@ -212,6 +219,7 @@ def program():
         Player1.draw(screen)
         Player2.draw(screen)
         Player3.draw(screen)
+
 
 
             # Draw the score text
