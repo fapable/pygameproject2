@@ -32,6 +32,12 @@ dice_three = pygame.image.load("dice_three.png")
 dice_four = pygame.image.load("dice_four.png")
 dice_five = pygame.image.load("dice_five.png")
 dice_six = pygame.image.load("dice_six.png")
+obama = pygame.image.load("obamaspeler.png")
+kim = pygame.image.load("kimkspeler.png")
+trump = pygame.image.load("trumpspeler.png")
+rund = pygame.image.load("rundfunkspeler.png")
+snoopdog = pygame.image.load("snoopdogspeler.png")
+gw = pygame.image.load("geertwildersspeler.png")
 black = 0, 0, 0
 white = 255, 255, 255
 red = 255, 0, 0
@@ -68,8 +74,11 @@ class Vector:
 
 
 class Player:
-    def __init__(self, x, y):
+    def __init__(self, name, x, y, image):
+        self.name = name
         self.pos = Vector(x, y)
+        self.image = image
+
 
     def update(self):
         if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts :
@@ -124,7 +133,7 @@ class Player:
 
 
     def draw(self, screen):
-        pygame.draw.rect(screen, (192, 192, 192), (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43), 0)
+        screen.blit(self.image, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
 
 
 
@@ -185,10 +194,14 @@ def program():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player(2,10)
+    Player1 = Player("player1",2,8, rund)
+    Player2 = Player("player2",2,9, kim)
+    Player3 = Player("player3",2,10, trump)
 
     while not process_events():
         Player.update(Player1)
+        Player.update(Player2)
+        Player.update(Player3)
 
         # Clear the screen
         screen.fill((255,255,255))
@@ -271,7 +284,8 @@ def program():
                     screen.blit(sniper,(48 * column + 5,48 * row + 5))
 
         Player1.draw(screen)
-
+        Player2.draw(screen)
+        Player3.draw(screen)
 
             # Draw the score text
         #score_text = font.render("Score: 100", 1, (255, 0, 0))
