@@ -38,6 +38,25 @@ trump = pygame.image.load("trumpspeler.png")
 rund = pygame.image.load("rundfunkspeler.png")
 snoopdog = pygame.image.load("snoopdogspeler.png")
 gw = pygame.image.load("geertwildersspeler.png")
+boat = pygame.image.load('Boat.png')
+hilton = pygame.image.load('hilton.png')
+luxor = pygame.image.load('luxor.png')
+abnamro = pygame.image.load('abnamro.png')
+hro = pygame.image.load('hro.png')
+kunsthal = pygame.image.load('kunsthal.png')
+inntelhotels = pygame.image.load('inntelhotels.png')
+woktogo = pygame.image.load('woktogo.png')
+debijenkorf = pygame.image.load('debijenkorf.png')
+huizejansen = pygame.image.load('huizejansen.png')
+kabouterbuttplug = pygame.image.load('kabouterbuttplug.png')
+kfcb = pygame.image.load('kfcb.png')
+kfc = pygame.image.load('kfc.png')
+oriental = pygame.image.load('oriental.png')
+euromast = pygame.image.load('euromast.png')
+coffeeshop = pygame.image.load('coffeeshopamigo.png')
+dedoelen = pygame.image.load('dedoelen.png')
+museumpark = pygame.image.load('museumpark.png')
+erasmusmc = pygame.image.load('erasmusmc.png')
 black = 0, 0, 0
 white = 255, 255, 255
 red = 255, 0, 0
@@ -297,6 +316,48 @@ def program():
                     screen.blit(begin3,(48 * column + 5,48 * row + 5))
                 elif row == 1 and column == 16:
                     screen.blit(sniper,(48 * column + 5,48 * row + 5))
+                elif row == 17 and column == 28:
+                    screen.blit(boat,(48 * column + 5,48 * row + 5))
+                elif row == 16 and column == 5:
+                    screen.blit(dedoelen,(48 * column + 5, 48 * row + 5))
+                elif row == 17 and column == 14:
+                    screen.blit(coffeeshop,(48 * column + 5, 48 * row + 5))
+                elif row == 17 and column == 24:
+                    screen.blit(erasmusmc,(48 * column + 5, 48 * row + 5))
+                elif row == 1 and column == 3:
+                    screen.blit(hilton,(48 * column + 5, 48 * row + 5))
+                elif row == 8 and column == 28:
+                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                elif row == 7 and column == 23:
+                    screen.blit(museumpark,(48 * column + 5, 48 * row + 5))
+                elif row == 14 and column == 28:
+                    screen.blit(oriental,(48 * column + 5, 48 * row + 5))
+                elif row == 8 and column == 28:
+                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                elif row == 14 and column == 10:
+                    screen.blit(kfc,(48 * column + 5, 48 * row + 5))
+                elif row == 8 and column == 28:
+                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                elif row == 3 and column == 8:
+                    screen.blit(luxor,(48 * column + 5, 48 * row + 5))
+                elif row == 1 and column == 13:
+                    screen.blit(abnamro,(48 * column + 5, 48 * row + 5))
+                elif row == 9 and column == 10:
+                    screen.blit(debijenkorf,(48 * column + 5, 48 * row + 5))
+                elif row == 4 and column == 17:
+                    screen.blit(woktogo,(48 * column + 5, 48 * row + 5))
+                elif row == 10 and column == 14:
+                    screen.blit(huizejansen,(48 * column + 5, 48 * row + 5))
+                elif row == 14 and column == 21:
+                    screen.blit(kfcb,(48 * column + 5, 48 * row + 5))
+                elif row == 10 and column == 17:
+                    screen.blit(kabouterbuttplug,(48 * column + 5, 48 * row + 5))
+                elif row == 1 and column == 20:
+                    screen.blit(hro,(48 * column + 5, 48 * row + 5))
+                elif row == 2 and column == 24:
+                    screen.blit(inntelhotels,(48 * column + 5, 48 * row + 5))
+                elif row ==2 and column == 29:
+                    screen.blit(kunsthal,(48 * column + 5, 48 * row + 5))
 
         Player1.draw(screen)
         Player2.draw(screen)
