@@ -99,6 +99,28 @@ class Player:
         self.image = image
         self.moves = moves
 
+    def dobbelsteen(self):
+        uitkomst = random.randrange(1, 6)
+
+        if uitkomst == 1:
+            print("gegooide cijfer is 1")
+            self.moves += 1
+        elif uitkomst == 2:
+            print("gegooide cijfer is 2")
+            self.moves += 2
+        elif uitkomst == 3:
+            print("gegooide cijfer is 3")
+            self.moves += 3
+        elif uitkomst == 4:
+            print("gegooide cijfer is 4")
+            self.moves += 4
+        elif uitkomst == 5:
+            print("gegooide cijfer is 5")
+            self.moves += 5
+        elif uitkomst == 6:
+            print("gegooide cijfer is 6")
+            self.moves += 6
+
 
     def update(self):
         if self.moves > 0:
