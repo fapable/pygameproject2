@@ -187,12 +187,20 @@ class Player:
                     self.pos.x -= 1
                     self.moves -= 1
 
+        elif self.moves == 0:
+
+
 
     def draw(self, screen):
         screen.blit(self.image, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
 
 
 
+p1 = Player("player1", 2, 8, rund, 5)
+p2 = Player("player2", 2, 9, kim, 5)
+p3 = Player("player3", 2, 10, trump, 5)
+
+players = [p1, p2, p3]
 
 
 
@@ -250,140 +258,137 @@ def program():
     font = pygame.font.Font(None, 30)
     pygame.display.set_caption("Ontsnapperdam")
 
-    Player1 = Player("player1",2,8, rund,5)
-    Player2 = Player("player2",2,9, kim,5)
-    Player3 = Player("player3",2,10, trump,5)
+
 
     while not process_events():
-        Player.update(Player1)
-        Player.update(Player2)
-        Player.update(Player3)
+        for player in players:
+            Player.update(player)
 
-        # Clear the screen
-        screen.fill((255,255,255))
 
-        #draw board
-        for row in range(0,20):
-            for column in range(0,32):
-                for i in normale_vakjes:
-                    if (row,column) == i :
-                        #pygame.draw.rect(screen, (255,255,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                        screen.blit(normale,(48 * column + 5,48 * row + 5))
-                    elif row == 7 and column == 0:
-                        pygame.draw.rect(screen, (0,0,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 8 and column == 0:
-                        pygame.draw.rect(screen, (255,0,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 9 and column == 0:
-                        pygame.draw.rect(screen, (255,0,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 10 and column == 0:
-                        pygame.draw.rect(screen, (0,255,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 11 and column == 0:
-                        pygame.draw.rect(screen, (255,255,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 12 and column == 0:
-                        pygame.draw.rect(screen, (0,255,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
-                    elif row == 9 and column == 1:
-                        pygame.draw.rect(screen, (255,255,255), (48 * column + 5 ,(48 * row + 5)+24,43,43), 0)
-                        screen.blit(normale,(48 * column + 5,(48 * row + 5)+24))
+            # Clear the screen
+            screen.fill((255,255,255))
+
+            #draw board
+            for row in range(0,20):
+                for column in range(0,32):
+                    for i in normale_vakjes:
+                        if (row,column) == i :
+                            #pygame.draw.rect(screen, (255,255,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                            screen.blit(normale,(48 * column + 5,48 * row + 5))
+                        elif row == 7 and column == 0:
+                            pygame.draw.rect(screen, (0,0,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 8 and column == 0:
+                            pygame.draw.rect(screen, (255,0,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 9 and column == 0:
+                            pygame.draw.rect(screen, (255,0,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 10 and column == 0:
+                            pygame.draw.rect(screen, (0,255,255), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 11 and column == 0:
+                            pygame.draw.rect(screen, (255,255,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 12 and column == 0:
+                            pygame.draw.rect(screen, (0,255,0), (48 * column + 5 ,48 * row + 5,43,43), 0)
+                        elif row == 9 and column == 1:
+                            pygame.draw.rect(screen, (255,255,255), (48 * column + 5 ,(48 * row + 5)+24,43,43), 0)
+                            screen.blit(normale,(48 * column + 5,(48 * row + 5)+24))
+                        elif row == 8 and column == 2:
+                            pygame.draw.rect(screen, (255,255,255), ((48 * column + 5 ),48 * row + 5,43,187), 0)
+                    for a in attack_vakjes:
+                        if (row,column) == a:
+                            screen.blit(attack,(48 * column + 5,48 * row + 5))
+                    for c in chance_vakjes:
+                        if (row,column) == c:
+                            screen.blit(chance,(48 * column + 5,48 * row + 5))
+                    for ca in chanceattack_vakjes:
+                        if (row,column) == ca:
+                            screen.blit(chanceattack,(48 * column + 5,48 * row + 5))
+                    for p in politie_vakjes:
+                        if (row,column) ==  p:
+                            screen.blit(politie,(48 * column + 5,48 * row + 5))
+                        elif row == 13 and column == 16 or row == 16 and column == 16 or row == 6 and column == 16:
+                            screen.blit(politielijnattack,(48 * column + 5,48 * row + 5))
+                        elif row == 8 and column == 16:
+                            screen.blit(politiec,(48 * column + 5,48 * row + 5))
+                        elif row == 11 and column == 16:
+                            screen.blit(politielijnmark,(48 * column + 5,48 * row + 5))
+                        elif row == 0 and column == 16:
+                            screen.blit(politielijnbadge,(48 * column + 5,48 * row + 5))
+                    for u in landmark_vakjes:
+                        if (row,column) == u:
+                            screen.blit(landmark,(48 * column + 5,48 * row + 5))
+                    for b in badge_vakjes:
+                        if (row,column) == b:
+                            screen.blit(badge,(48 * column + 5,48 * row + 5))
+                    if row == 3 and column == 10:
+                        screen.blit(wildfire,(48 * column + 5,48 * row + 5))
+                    elif row == 6 and column == 17:
+                        screen.blit(ufo,(48 * column + 5,48 * row + 5))
+                    elif row == 8 and column == 31:
+                        screen.blit(plusultra,(48 * column + 5,48 * row + 5))
+                    elif row == 10 and column == 22:
+                        screen.blit(taxi,(48 * column + 5,48 * row + 5))
+                    elif row == 11 and column == 10:
+                        screen.blit(fiets,(48 * column + 5,48 * row + 5))
+                    elif row == 13 and column == 27:
+                        screen.blit(slowdowntime,(48 * column + 5,48 * row + 5))
+                    elif row == 18 and column == 17:
+                        screen.blit(camo,(48 * column + 5,48 * row + 5))
+                    elif row == 19 and column == 9:
+                        screen.blit(fusrodah,(48 * column + 5,48 * row + 5))
+                    elif row == 16 and column == 30:
+                        screen.blit(end,(48 * column + 5,48 * row + 5))
                     elif row == 8 and column == 2:
-                        pygame.draw.rect(screen, (255,255,255), ((48 * column + 5 ),48 * row + 5,43,187), 0)
-                for a in attack_vakjes:
-                    if (row,column) == a:
-                        screen.blit(attack,(48 * column + 5,48 * row + 5))
-                for c in chance_vakjes:
-                    if (row,column) == c:
-                        screen.blit(chance,(48 * column + 5,48 * row + 5))
-                for ca in chanceattack_vakjes:
-                    if (row,column) == ca:
-                        screen.blit(chanceattack,(48 * column + 5,48 * row + 5))
-                for p in politie_vakjes:
-                    if (row,column) ==  p:
-                        screen.blit(politie,(48 * column + 5,48 * row + 5))
-                    elif row == 13 and column == 16 or row == 16 and column == 16 or row == 6 and column == 16:
-                        screen.blit(politielijnattack,(48 * column + 5,48 * row + 5))
-                    elif row == 8 and column == 16:
-                        screen.blit(politiec,(48 * column + 5,48 * row + 5))
-                    elif row == 11 and column == 16:
-                        screen.blit(politielijnmark,(48 * column + 5,48 * row + 5))
-                    elif row == 0 and column == 16:
-                        screen.blit(politielijnbadge,(48 * column + 5,48 * row + 5))
-                for u in landmark_vakjes:
-                    if (row,column) == u:
-                        screen.blit(landmark,(48 * column + 5,48 * row + 5))
-                for b in badge_vakjes:
-                    if (row,column) == b:
-                        screen.blit(badge,(48 * column + 5,48 * row + 5))
-                if row == 3 and column == 10:
-                    screen.blit(wildfire,(48 * column + 5,48 * row + 5))
-                elif row == 6 and column == 17:
-                    screen.blit(ufo,(48 * column + 5,48 * row + 5))
-                elif row == 8 and column == 31:
-                    screen.blit(plusultra,(48 * column + 5,48 * row + 5))
-                elif row == 10 and column == 22:
-                    screen.blit(taxi,(48 * column + 5,48 * row + 5))
-                elif row == 11 and column == 10:
-                    screen.blit(fiets,(48 * column + 5,48 * row + 5))
-                elif row == 13 and column == 27:
-                    screen.blit(slowdowntime,(48 * column + 5,48 * row + 5))
-                elif row == 18 and column == 17:
-                    screen.blit(camo,(48 * column + 5,48 * row + 5))
-                elif row == 19 and column == 9:
-                    screen.blit(fusrodah,(48 * column + 5,48 * row + 5))
-                elif row == 16 and column == 30:
-                    screen.blit(end,(48 * column + 5,48 * row + 5))
-                elif row == 8 and column == 2:
-                    screen.blit(begin2,(48 * column + 5,48 * row + 5))
-                elif row == 9 and column == 2 or row == 10 and column == 2:
-                    screen.blit(begin1,(48 * column + 5,48 * row + 5))
-                elif row == 11 and column == 2:
-                    screen.blit(begin3,(48 * column + 5,48 * row + 5))
-                elif row == 1 and column == 16:
-                    screen.blit(sniper,(48 * column + 5,48 * row + 5))
-                elif row == 17 and column == 28:
-                    screen.blit(boat,(48 * column + 5,48 * row + 5))
-                elif row == 16 and column == 5:
-                    screen.blit(dedoelen,(48 * column + 5, 48 * row + 5))
-                elif row == 17 and column == 14:
-                    screen.blit(coffeeshop,(48 * column + 5, 48 * row + 5))
-                elif row == 17 and column == 24:
-                    screen.blit(erasmusmc,(48 * column + 5, 48 * row + 5))
-                elif row == 1 and column == 3:
-                    screen.blit(hilton,(48 * column + 5, 48 * row + 5))
-                elif row == 8 and column == 28:
-                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
-                elif row == 7 and column == 23:
-                    screen.blit(museumpark,(48 * column + 5, 48 * row + 5))
-                elif row == 14 and column == 28:
-                    screen.blit(oriental,(48 * column + 5, 48 * row + 5))
-                elif row == 8 and column == 28:
-                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
-                elif row == 14 and column == 10:
-                    screen.blit(kfc,(48 * column + 5, 48 * row + 5))
-                elif row == 8 and column == 28:
-                    screen.blit(euromast,(48 * column + 5, 48 * row + 5))
-                elif row == 3 and column == 8:
-                    screen.blit(luxor,(48 * column + 5, 48 * row + 5))
-                elif row == 1 and column == 13:
-                    screen.blit(abnamro,(48 * column + 5, 48 * row + 5))
-                elif row == 9 and column == 10:
-                    screen.blit(debijenkorf,(48 * column + 5, 48 * row + 5))
-                elif row == 4 and column == 17:
-                    screen.blit(woktogo,(48 * column + 5, 48 * row + 5))
-                elif row == 10 and column == 14:
-                    screen.blit(huizejansen,(48 * column + 5, 48 * row + 5))
-                elif row == 14 and column == 21:
-                    screen.blit(kfcb,(48 * column + 5, 48 * row + 5))
-                elif row == 10 and column == 17:
-                    screen.blit(kabouterbuttplug,(48 * column + 5, 48 * row + 5))
-                elif row == 1 and column == 20:
-                    screen.blit(hro,(48 * column + 5, 48 * row + 5))
-                elif row == 2 and column == 24:
-                    screen.blit(inntelhotels,(48 * column + 5, 48 * row + 5))
-                elif row ==2 and column == 29:
-                    screen.blit(kunsthal,(48 * column + 5, 48 * row + 5))
+                        screen.blit(begin2,(48 * column + 5,48 * row + 5))
+                    elif row == 9 and column == 2 or row == 10 and column == 2:
+                        screen.blit(begin1,(48 * column + 5,48 * row + 5))
+                    elif row == 11 and column == 2:
+                        screen.blit(begin3,(48 * column + 5,48 * row + 5))
+                    elif row == 1 and column == 16:
+                        screen.blit(sniper,(48 * column + 5,48 * row + 5))
+                    elif row == 17 and column == 28:
+                        screen.blit(boat,(48 * column + 5,48 * row + 5))
+                    elif row == 16 and column == 5:
+                        screen.blit(dedoelen,(48 * column + 5, 48 * row + 5))
+                    elif row == 17 and column == 14:
+                        screen.blit(coffeeshop,(48 * column + 5, 48 * row + 5))
+                    elif row == 17 and column == 24:
+                        screen.blit(erasmusmc,(48 * column + 5, 48 * row + 5))
+                    elif row == 1 and column == 3:
+                        screen.blit(hilton,(48 * column + 5, 48 * row + 5))
+                    elif row == 8 and column == 28:
+                        screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                    elif row == 7 and column == 23:
+                        screen.blit(museumpark,(48 * column + 5, 48 * row + 5))
+                    elif row == 14 and column == 28:
+                        screen.blit(oriental,(48 * column + 5, 48 * row + 5))
+                    elif row == 8 and column == 28:
+                        screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                    elif row == 14 and column == 10:
+                        screen.blit(kfc,(48 * column + 5, 48 * row + 5))
+                    elif row == 8 and column == 28:
+                        screen.blit(euromast,(48 * column + 5, 48 * row + 5))
+                    elif row == 3 and column == 8:
+                        screen.blit(luxor,(48 * column + 5, 48 * row + 5))
+                    elif row == 1 and column == 13:
+                        screen.blit(abnamro,(48 * column + 5, 48 * row + 5))
+                    elif row == 9 and column == 10:
+                        screen.blit(debijenkorf,(48 * column + 5, 48 * row + 5))
+                    elif row == 4 and column == 17:
+                        screen.blit(woktogo,(48 * column + 5, 48 * row + 5))
+                    elif row == 10 and column == 14:
+                        screen.blit(huizejansen,(48 * column + 5, 48 * row + 5))
+                    elif row == 14 and column == 21:
+                        screen.blit(kfcb,(48 * column + 5, 48 * row + 5))
+                    elif row == 10 and column == 17:
+                        screen.blit(kabouterbuttplug,(48 * column + 5, 48 * row + 5))
+                    elif row == 1 and column == 20:
+                        screen.blit(hro,(48 * column + 5, 48 * row + 5))
+                    elif row == 2 and column == 24:
+                        screen.blit(inntelhotels,(48 * column + 5, 48 * row + 5))
+                    elif row ==2 and column == 29:
+                        screen.blit(kunsthal,(48 * column + 5, 48 * row + 5))
 
-        Player1.draw(screen)
-        Player2.draw(screen)
-        Player3.draw(screen)
+            Player.draw(player, screen)
+
 
             # Draw the score text
         #score_text = font.render("Score: 100", 1, (255, 0, 0))
