@@ -71,6 +71,7 @@ landmark_vakjes = [(0,4),(0,21),(2,8),(3,14),(3,31),(4,19),(4,25),(8,11),(8,26),
 politie_vakjes = [(2,16),(3,16),(7,16),(9,16),(10,16),(12,16),(19,16)]
 attack_vakjes = [(2,9),(4,10),(5,10),(5,14),(5,19),(6,9),(6,14),(6,15),(6,18),(6,28),(6,29),(6,30),(6,31),(7,31),(11,11),(11,12),(12,12),(13,15),(14,15),(14,27),(15,15),(15,27),(16,28),(18,7),(19,5),(19,6),(19,8)]
 chance_vakjes = [(0,12),(0,15),(0,26),(1,31),(3,17),(4,12),(5,2),(6,23),(6,26),(7,7),(8,13),(8,22),(9,4),(9,31),(11,26),(13,7),(13,12),(13,18),(13,23),(16,2),(16,31),(17,9),(19,20)]
+einde = [(16,13)]
 
 abn = [(3,14)]
 amazingoriental = [(16,29)]
@@ -199,6 +200,7 @@ class Player:
                             self.moves -= 1
 
 
+
                     elif (self.pos.y, self.pos.x) in startvakjes:
                         keys = pygame.key.get_pressed()
                         if keys[pygame.K_RIGHT]:
@@ -498,6 +500,11 @@ class Player:
                             self.pos.x -= 1
                             self.moves -= 1
 
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
 
 
 
@@ -533,6 +540,11 @@ class Player:
                         elif keys[pygame.K_RIGHT]:
                             self.pos.x += 1
                             self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
 
                     elif (self.pos.y, self.pos.x) in startvakjes:
@@ -624,6 +636,11 @@ class Player:
                             self.pos.x += 1
                             self.moves -= 1
 
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
 
                     elif (self.pos.y, self.pos.x) in startvakjes:
                         keys = pygame.key.get_pressed()
@@ -713,6 +730,12 @@ class Player:
                         elif keys[pygame.K_RIGHT]:
                             self.pos.x += 1
                             self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
 
                     elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
@@ -779,6 +802,11 @@ class Player:
                             self.pos.x += 1
                             self.moves -= 1
 
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
 
                     elif (self.pos.y, self.pos.x) in startvakjes:
                         keys = pygame.key.get_pressed()
@@ -835,6 +863,11 @@ class Player:
                         if keys[pygame.K_LEFT]:
                             self.pos.x -= 1
                             self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
 
 
@@ -1175,6 +1208,11 @@ class Player:
                         if keys[pygame.K_LEFT]:
                             self.pos.x -= 1
                             self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in einde:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
             elif self.moves == 4:
 
                 if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
@@ -1538,6 +1576,7 @@ class Player:
                         if keys[pygame.K_LEFT]:
                             self.pos.x -= 1
                             self.moves -= 1
+
 
 
             elif self.moves == 5:
