@@ -26,12 +26,12 @@ begin1 = pygame.image.load('begin1.png')
 begin2 = pygame.image.load('begin2.png')
 begin3 = pygame.image.load('begin3.png')
 sniper = pygame.image.load('Sniper.png')
-#dice_one = pygame.image.load("dice_one.png")
-#dice_two = pygame.image.load("dice_two.png")
-#dice_three = pygame.image.load("dice_three.png")
-#dice_four = pygame.image.load("dice_four.png")
-#dice_five = pygame.image.load("dice_five.png")
-#dice_six = pygame.image.load("dice_six.png")
+dice_one = pygame.image.load("dice_one.png")
+dice_two = pygame.image.load("dice_two.png")
+dice_three = pygame.image.load("dice_three.png")
+dice_four = pygame.image.load("dice_four.png")
+dice_five = pygame.image.load("dice_five.png")
+dice_six = pygame.image.load("dice_six.png")
 obama = pygame.image.load("obamaspeler.png")
 kim = pygame.image.load("kimkspeler.png")
 trump = pygame.image.load("trumpspeler.png")
@@ -75,7 +75,7 @@ rechts = [(19,2),(10,19),(13,15),(11,8),(11,11),(15,10),(6,7),(19,26),(19,9),(17
 omhoog = [(7,13),(18,17),(10,22),(7,16),(11,19),(13,16),(13,19),(19,27),(1, 2),(2,16),(1,16),(13,16),(12,16),(11,16),(10,16),(9,16),(8,16),(7,17),(19,7),(18,7),(6,14),(5,14),(5,2),(17,9),(13,7),(7,7),(8,13),(4,12),(8,22),(11,16),(18,2),(17,2),(15,2),(14,2),(13,2),(12,2),(11,2),(10,2),(9,2),(8,2),(7,2),(6,2),(4,2),(3,2),(2,2),(1,1),(10,4),(9,7),(8,7),(16,9),(15,12),(4,14),(19,17),(17,17),(12,19),(9,22),(7,22),(17,23),(16,23),(14,23),(6,24),(5,24),(13,26),(12,26),(10,26),(9,26),(7,26),(5,26),(18,27),(17,27),(14,12),(15,23),(8,26)]
 omlaag = [(5,28),(14,7),(7,16),(8,16),(9,16),(10,16),(11,16),(12,16),(6,16),(0,16),(1,16),(2,16),(2,10),(3,10),(4,10),(5,10),(6,10),(11,12),(12,12),(5,14),(13,15),(14,15),(15,15),(5,19),(13,27),(14,27),(15,27),(6,31),(7,31),(8,31),(16,2),(13,7),(0,12),(4,12),(6,26),(1,31),(9,31),(18,2),(17,2),(15,2),(14,2),(13,2),(12,2),(11,2),(10,2),(9,2),(8,2),(8,7),(9,7),(10,7),(11,7),(12,7),(0,8),(1,8),(7,10),(1,12),(2,12),(3,12),(5,12),(4,14),(16,17),(17,17),(3,19),(14,20),(13,20),(15,20),(16,20),(4,26),(5,26),(7,26),(9,26),(10,26),(12,26),(0,31),(2,31),(4,31),(5,31),(10,31),(11,31),(12,31),(13,31),(14,31),(15,31),(2,10),(6,10),(4,28),(3,14),(4,19),(8,26),(3,31)]
 links = [(16,31)]
-
+startvakjes = [(7,0),(8,0),(9,0),(10,0),(11,0),(12,0)]
 
 pl1 = 'player1'
 pl2 = 'player2'
@@ -118,22 +118,22 @@ class Player:
         uitkomst = random.randrange(1, 6)
 
         if uitkomst == 1:
-            print("gegooide cijfer is 1")
+            print("gegooide cijfer is 1 \n" + str(self.name))
             self.moves += 1
         elif uitkomst == 2:
-            print("gegooide cijfer is 2")
+            print("gegooide cijfer is 2 \n" + str(self.name))
             self.moves += 2
         elif uitkomst == 3:
-            print("gegooide cijfer is 3")
+            print("gegooide cijfer is 3 \n" + str(self.name))
             self.moves += 3
         elif uitkomst == 4:
-            print("gegooide cijfer is 4")
+            print("gegooide cijfer is 4 \n" + str(self.name))
             self.moves += 4
         elif uitkomst == 5:
-            print("gegooide cijfer is 5")
+            print("gegooide cijfer is 5 \n" + str(self.name))
             self.moves += 5
         elif uitkomst == 6:
-            print("gegooide cijfer is 6")
+            print("gegooide cijfer is 6 \n" + str(self.name))
             self.moves += 6
 
 
@@ -154,6 +154,11 @@ class Player:
                     elif keys[pygame.K_RIGHT]:
                         self.pos.x += 1
                         self.moves -= 1
+
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.moves = 0
 
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
                     keys = pygame.key.get_pressed()
@@ -222,6 +227,11 @@ class Player:
                         self.pos.x += 1
                         self.moves -= 1
 
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.moves = 0
+
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
                     keys = pygame.key.get_pressed()
                     if keys[pygame.K_UP]:
@@ -288,6 +298,11 @@ class Player:
                     elif keys[pygame.K_RIGHT]:
                         self.pos.x += 1
                         self.moves -= 1
+
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.moves = 0
 
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
                     keys = pygame.key.get_pressed()
@@ -356,6 +371,15 @@ class Player:
                         self.pos.x += 1
                         self.moves -= 1
 
+
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.pos.y = 10
+                        self.pos.x = 2
+                        self.moves -= 1
+
+
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
                     keys = pygame.key.get_pressed()
                     if keys[pygame.K_UP]:
@@ -423,6 +447,14 @@ class Player:
                         self.pos.x += 1
                         self.moves -= 1
 
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.pos.y = 10
+                        self.pos.x = 2
+                        self.moves -= 1
+
+
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
                     keys = pygame.key.get_pressed()
                     if keys[pygame.K_UP]:
@@ -477,7 +509,7 @@ class Player:
 
             elif self.moves == 6:
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts :
+                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts:
                     keys = pygame.key.get_pressed()
                     if keys[pygame.K_UP]:
                         self.pos.y -= 1
@@ -487,6 +519,13 @@ class Player:
                         self.moves -= 1
                     elif keys[pygame.K_RIGHT]:
                         self.pos.x += 1
+                        self.moves -= 1
+
+                elif (self.pos.y, self.pos.x) in startvakjes:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_RIGHT]:
+                        self.pos.y = 10
+                        self.pos.x = 2
                         self.moves -= 1
 
                 elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
@@ -558,9 +597,9 @@ class Player:
         screen.blit(self.image, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
 
 
-p1 = Player("player1", 2, 8, rund, 0)
-p2 = Player("player2", 2, 9, kim, 0)
-p3 = Player("player3", 2, 10, trump, 0)
+p1 = Player("player1", 0, 7, rund, 0)
+p2 = Player("player2", 0, 8, kim, 0)
+p3 = Player("player3", 0, 9, trump, 0)
 
 players = [p1,p2,p3]
 
