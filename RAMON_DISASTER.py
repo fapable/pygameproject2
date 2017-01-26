@@ -128,12 +128,16 @@ class Vector:
 
 
 class Player:
-    def __init__(self, name, x, y, image, moves):
+    def __init__(self, name, x, y, image, moves, objective1, objective2, objective3):
         self.name = name
         self.pos = Vector(x, y)
         self.image = image
         self.moves = moves
         self.turn = True
+        self.objective1 = objective1
+        self.objective2 = objective2
+        self.objective3 = objective3
+
 
     def dobbelsteen(self):
         uitkomst = random.randrange(1, 6)
@@ -163,443 +167,2113 @@ class Player:
         global beurt
         if beurt == self.name:
             if self.moves == 1:
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
-                self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.moves = 0
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+
 
 
             elif self.moves == 2:
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
-                self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.moves = 0
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+
+
 
 
             elif self.moves == 3:
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
-                self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.moves = 0
-
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
 
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
             elif self.moves == 4:
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
-                self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
 
 
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.y = 10
-                        self.pos.x = 2
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
 
 
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                    self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
 
 
             elif self.moves == 5:
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
-                self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.y = 10
-                        self.pos.x = 2
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
 
 
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+
+
+
 
 
             elif self.moves == 6:
+                if (self.pos.y, self.pos.x) in abn and self.objective1 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective1 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective1 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective1 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective1 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective1 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective1 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective1 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective1 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective1 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective1 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective1 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective1 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective1 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective1 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective1 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective1 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective1 in woktogo1:
+                    self.objective1 == "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in startvakjes:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.y = 10
-                        self.pos.x = 2
-                        self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
-                    elif keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in rechts:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_RIGHT]:
-                        self.pos.x += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omhoog:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_UP]:
-                        self.pos.y -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in omlaag:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_DOWN]:
-                        self.pos.y += 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
 
-                elif (self.pos.y, self.pos.x) in links:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_LEFT]:
-                        self.pos.x -= 1
-                        self.moves -= 1
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective2 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective2 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective2 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective2 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective2 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective2 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective2 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective2 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective2 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective2 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective2 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective2 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective2 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective2 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective2 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective2 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective2 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective2 in woktogo1:
+
+                    self.objective2 = "behaald"
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+                if (self.pos.y, self.pos.x) in abn and self.objective3 in abn or (
+                        self.pos.y, self.pos.x) in amazingoriental and self.objective3 in amazingoriental or (
+                        self.pos.y, self.pos.x) in bijenkorf and self.objective3 in bijenkorf or (
+                        self.pos.y, self.pos.x) in koffieshop and self.objective3 in koffieshop or (
+                        self.pos.y, self.pos.x) in doelen and self.objective3 in doelen or (
+                        self.pos.y, self.pos.x) in erasmus and self.objective3 in erasmus or (
+                        self.pos.y, self.pos.x) in euromast1 and self.objective3 in euromast1 or (
+                        self.pos.y, self.pos.x) in hilton1 and self.objective3 in hilton1 or (
+                        self.pos.y, self.pos.x) in hro1 and self.objective3 in hro1 or (
+                        self.pos.y, self.pos.x) in intellhotel and self.objective3 in intellhotel or (
+                        self.pos.y, self.pos.x) in janzen and self.objective3 in janzen or (
+                        self.pos.y, self.pos.x) in kabouter and self.objective3 in kabouter or (
+                        self.pos.y, self.pos.x) in kfc1 and self.objective3 in kfc1 or (
+                        self.pos.y, self.pos.x) in kfc2 and self.objective3 in kfc2 or (
+                        self.pos.y, self.pos.x) in kunsthal1 and self.objective3 in kunsthal1 or (
+                        self.pos.y, self.pos.x) in luxor1 and self.objective3 in luxor1 or (
+                        self.pos.y, self.pos.x) in museumpark1 and self.objective3 in museumpark1 or (
+                        self.pos.y, self.pos.x) in woktogo1 and self.objective3 in woktogo1:
+                    self.objective3 = "behaald"
+
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+                else:
+                    if (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag and (
+                            self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.y = 10
+                            self.pos.x = 2
+                            self.moves -= 1
+
+
+                    elif (self.pos.y, self.pos.x) in startvakjes:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.moves = 0
+
+                    elif (self.pos.y, self.pos.x) in omhoog and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts and (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+                        elif keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in rechts:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RIGHT]:
+                            self.pos.x += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omhoog:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_UP]:
+                            self.pos.y -= 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in omlaag:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_DOWN]:
+                            self.pos.y += 1
+                            self.moves -= 1
+
+                    elif (self.pos.y, self.pos.x) in links:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_LEFT]:
+                            self.pos.x -= 1
+                            self.moves -= 1
+
+
+
+
             elif self.moves == 0 and beurt == pl1:
                 beurt = pl2
                 self.turn = False
@@ -619,10 +2293,185 @@ class Player:
     def draw(self, screen):
         screen.blit(self.image, (48 * self.pos.x + 5, 48 * self.pos.y + 5, 43, 43))
 
+def rollobjective1():
+    resultobjective1 = random.randrange(1, 18)
 
-p1 = Player("player1", 0, 7, rund, 0)
-p2 = Player("player2", 0, 8, kim, 0)
-p3 = Player("player3", 0, 9, trump, 0)
+    if resultobjective1 == 1:
+        Player.objective1 = abn
+        print(Player.objective1)
+    elif resultobjective1 == 2:
+        Player.objective1 = amazingoriental
+        print(Player.objective1)
+    elif resultobjective1 == 3:
+        Player.objective1 =bijenkorf
+        print(Player.objective1)
+    elif resultobjective1 == 4:
+        Player.objective1 = koffieshop
+        print(Player.objective1)
+    elif resultobjective1 == 5:
+        Player.objective1 = doelen
+        print(Player.objective1)
+    elif resultobjective1 == 6:
+        Player.objective1 = erasmus
+        print(Player.objective1)
+    elif resultobjective1 == 7:
+        Player.objective1 = euromast1
+        print(Player.objective1)
+    elif resultobjective1 == 8:
+        Player.objective1 = hilton1
+        print(Player.objective1)
+    elif resultobjective1 == 9:
+        Player.objective1 = hro1
+        print(Player.objective1)
+    elif resultobjective1 == 10:
+        Player.objective1 = intellhotel
+        print(Player.objective1)
+    elif resultobjective1 == 11:
+        Player.objective1 = janzen
+        print(Player.objective1)
+    elif resultobjective1 == 12:
+        Player.objective1 = kabouter
+        print(Player.objective1)
+    elif resultobjective1 == 13:
+        Player.objective1 = kfc1
+        print(Player.objective1)
+    elif resultobjective1 == 14:
+        Player.objective1 = kfc2
+        print(Player.objective1)
+    elif resultobjective1 == 15:
+        Player.objective1 = kunsthal1
+        print(Player.objective1)
+    elif resultobjective1 == 16:
+        Player.objective1 = luxor1
+        print(Player.objective1)
+    elif resultobjective1 == 17:
+        Player.objective1 = museumpark1
+        print(Player.objective1)
+    elif resultobjective1 == 18:
+        Player.objective1 = woktogo1
+        print(Player.objective1)
+
+def rollobjective2():
+    resultobjective2 = random.randrange(1, 18)
+
+    if resultobjective2 == 1:
+        Player.objective2 = abn
+        print(Player.objective2)
+    elif resultobjective2 == 2:
+        Player.objective2 = amazingoriental
+        print(Player.objective2)
+    elif resultobjective2 == 3:
+        Player.objective2 =bijenkorf
+        print(Player.objective2)
+    elif resultobjective2 == 4:
+        Player.objective2 = koffieshop
+        print(Player.objective2)
+    elif resultobjective2 == 5:
+        Player.objective2 = doelen
+        print(Player.objective2)
+    elif resultobjective2 == 6:
+        Player.objective2 = erasmus
+        print(Player.objective2)
+    elif resultobjective2 == 7:
+        Player.objective2 = euromast1
+        print(Player.objective2)
+    elif resultobjective2 == 8:
+        Player.objective2 = hilton1
+        print(Player.objective2)
+    elif resultobjective2 == 9:
+        Player.objective2 = hro1
+        print(Player.objective2)
+    elif resultobjective2 == 10:
+        Player.objective2 = intellhotel
+        print(Player.objective2)
+    elif resultobjective2 == 11:
+        Player.objective2 = janzen
+        print(Player.objective2)
+    elif resultobjective2 == 12:
+        Player.objective2 = kabouter
+        print(Player.objective2)
+    elif resultobjective2 == 13:
+        Player.objective2 = kfc1
+        print(Player.objective2)
+    elif resultobjective2 == 14:
+        Player.objective2 = kfc2
+        print(Player.objective2)
+    elif resultobjective2 == 15:
+        Player.objective2 = kunsthal1
+        print(Player.objective2)
+    elif resultobjective2 == 16:
+        Player.objective2 = luxor1
+        print(Player.objective2)
+    elif resultobjective2 == 17:
+        Player.objective2 = museumpark1
+        print(Player.objective2)
+    elif resultobjective2 == 18:
+        Player.objective2 = woktogo1
+        print(Player.objective2)
+
+def rollobjective3():
+    resultobjective3 = random.randrange(1, 18)
+
+    if resultobjective3 == 1:
+        Player.objective3 = abn
+        print(Player.objective3)
+    elif resultobjective3 == 2:
+        Player.objective3 = amazingoriental
+        print(Player.objective3)
+    elif resultobjective3 == 3:
+        Player.objective3 =bijenkorf
+        print(Player.objective3)
+    elif resultobjective3 == 4:
+        Player.objective3 = koffieshop
+        print(Player.objective3)
+    elif resultobjective3 == 5:
+        Player.objective3 = doelen
+        print(Player.objective3)
+    elif resultobjective3 == 6:
+        Player.objective3 = erasmus
+        print(Player.objective3)
+    elif resultobjective3 == 7:
+        Player.objective3 = euromast1
+        print(Player.objective3)
+    elif resultobjective3 == 8:
+        Player.objective3 = hilton1
+        print(Player.objective3)
+    elif resultobjective3 == 9:
+        Player.objective3 = hro1
+        print(Player.objective3)
+    elif resultobjective3 == 10:
+        Player.objective3 = intellhotel
+        print(Player.objective3)
+    elif resultobjective3 == 11:
+        Player.objective3 = janzen
+        print(Player.objective3)
+    elif resultobjective3 == 12:
+        Player.objective3 = kabouter
+        print(Player.objective3)
+    elif resultobjective3 == 13:
+        Player.objective3 = kfc1
+        print(Player.objective3)
+    elif resultobjective3 == 14:
+        Player.objective3 = kfc2
+        print(Player.objective3)
+    elif resultobjective3 == 15:
+        Player.objective3 = kunsthal1
+        print(Player.objective3)
+    elif resultobjective3 == 16:
+        Player.objective3 = luxor1
+        print(Player.objective3)
+    elif resultobjective3 == 17:
+        Player.objective3 = museumpark1
+        print(Player.objective3)
+    elif resultobjective3 == 18:
+        Player.objective3 = woktogo1
+        print(Player.objective3)
+
+
+
+p1 = Player("player1", 0, 7, rund, 0, rollobjective1(), rollobjective2(), rollobjective3())
+p2 = Player("player2", 0, 8, kim, 0, rollobjective1(), rollobjective2(), rollobjective3())
+p3 = Player("player3", 0, 9, trump, 0, rollobjective1(), rollobjective2(), rollobjective3())
 
 players = [p1,p2,p3]
 
