@@ -1,0 +1,376 @@
+#Engels Menu moet nog goed worden aangeroepen in de opties met de juiste Foto's
+
+
+
+def menuENG():
+    redSquare = pygame.image.load('MENU.png')
+    white = (255,255,255)
+    w = 1700
+    h = 1000
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+    x = 0
+    y = 0
+    black = (0,0,0)
+    screen.blit(redSquare, (x, y))
+     # Draw the score t
+    pygame.display.flip()
+    choose = dm.dumbmenu(screen, ['Start Game',
+                                        'Options',
+                                        'Manual',
+                                        'Show Highscore',
+                                        'Quit Game'], 200,150,None,35,1.4,black ,black)
+
+    if choose == 0:
+        Playerseng()
+        print ("You choose 'Start Game'.")
+    elif choose == 1:
+        optieseng()
+        print ("You choose 'Options'.")
+    elif choose == 2:
+        storyeng()
+        print( "You choose 'Manual'.")
+    elif choose == 3:
+        scherm()
+        print ("You choose 'Show Highscore'.")
+    elif choose == 4:
+        print ("You choose 'Quit Game'.")
+pygame.init()
+def foto (name):
+    redSquare = pygame.image.load('winnerscreen.png')
+    white = (255,255,255)
+    w = 1700
+    h = 1000
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    font = pygame.font.Font(None, 80)
+    score_text = font.render(name, 1, (0, 0, 0))
+    screen.blit(score_text, (460,300))
+    pygame.display.flip()
+
+
+    running = True
+
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.K_KP_ENTER:
+                    HoofdmenuNL()
+def Playerseng():
+
+    redSquare = pygame.image.load('achtergrondopties.png')
+    white = (255,255,255)
+    w = 1700
+    h = 1000
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    black = (0,0,0)
+
+
+    choose = dm.dumbmenu(screen,[
+                            '- 3 players',
+                            '- 4 players',
+                            '- 5 players', '- 6 players',
+                            '- Back to Menu']
+                            , 200,150,None,35,1.4,black ,black)
+
+
+    if choose == 0:
+        program()
+
+        print ("You choose '3 players'.")
+    elif choose == 1:
+        A.program2()
+        print ("You choose '4 players'.")
+    elif choose == 2:
+        V.program3()
+        print("You choose '5 players'.")
+    elif choose == 3:
+        program4()
+        print ("You choose '6 players'.")
+    elif choose == 5:
+        menuENG()
+        print("You choose 'Back to Menu'.")
+def optieseng():
+
+    redSquare = pygame.image.load('achtergrondopties.png')
+    white = (255,255,255)
+    w = 1700
+    h = 1000
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    black = (0,0,0)
+
+    choose = dm.dumbmenu(screen,[
+                            'Sound off/on',
+                            'Change -> Engels/Dutch',
+                            'Back to Menu']
+                            , 180,150,None,35,1.4,black ,black)
+
+
+    if choose == 0:
+        menuENG()
+        pygame.mixer.music.stop
+        print ("You choose 'Sound off/on'.")
+    elif choose == 1:
+        HoofdmenuNL()
+        print ("You choose 'Change -> Engels/Dutch'.")
+    elif choose == 2:
+        menuENG()
+        print( "You choose 'Back to Menu'.")
+def regelseng():
+
+    redSquare = pygame.image.load('regels1ENG.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels2eng()
+def regels2eng():
+
+    redSquare = pygame.image.load('regels2ENG.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels3eng()
+def regels3eng():
+
+    redSquare = pygame.image.load('regels3ENG.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels4eng()
+def regels4eng():
+
+    redSquare = pygame.image.load('rules.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels5eng()
+def regels5eng():
+
+    redSquare = pygame.image.load('surprise.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels6eng()
+def regels6eng():
+
+    redSquare = pygame.image.load('quest.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels7eng()
+def regels7eng():
+
+    redSquare = pygame.image.load('power.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regels8eng()
+def regels8eng():
+
+    redSquare = pygame.image.load('battle.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    menuENG()
+                    print('Einde terug naar menu')
+def storyeng():
+
+    redSquare = pygame.image.load('storyENG.png')
+    clock = pygame.time.Clock()
+    white = (255, 64, 64)
+    w = 810
+    h = 420
+    screen = pygame.display.set_mode((w, h))
+    screen.fill((white))
+
+    screen.fill((white))
+    x = 0
+    y = 0
+    screen.blit(redSquare, (x, y))
+    pygame.display.flip()
+
+    running = True
+    while (running):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if redSquare.get_rect().collidepoint(x, y):
+                    regelseng()
+
+
+
+
+
+#######################################################################################################
