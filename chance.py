@@ -1,9 +1,5 @@
 
-# Foto's moeten nog geupload worden in pygame scherm
 # Foto's van de kaartjes
-
-
-
 sp1 = pygame.image.load('suprisekaart1.png')
 sp2 = pygame.image.load('suprisekaart2.png')
 sp3 = pygame.image.load('suprisekaart3.png')
